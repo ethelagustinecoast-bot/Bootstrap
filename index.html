@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethel John Agustin | Personal Space</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ── Global ── */
+    :root {
+      --navy: #0d1b2a;
+      --accent: #1e6091;
+      --gold: #e9c46a;
+      --light-bg: #f0f4f8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--light-bg);
+      color: #2d3748;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background-color: var(--navy) !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold) !important;
+      letter-spacing: .04em;
+    }
+    .nav-link { color: #cdd6f4 !important; transition: color .2s; }
+    .nav-link:hover { color: var(--gold) !important; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--accent) 100%);
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-avatar {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--gold);
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .hero .badge-role {
+      background-color: var(--gold);
+      color: var(--navy);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: .4rem .9rem;
+      border-radius: 50px;
+      letter-spacing: .06em;
+    }
+    .hero p.lead { color: #cdd6f4; font-size: 1.1rem; }
+    .hero .btn-hero {
+      background-color: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      border: none;
+      padding: .65rem 1.8rem;
+      border-radius: 50px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .hero .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(233,196,106,.45); }
+
+    /* ── Section headings ── */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 50%; height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* ── About card ── */
+    .about-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      border: none;
+      transition: transform .3s;
+    }
+    .about-card:hover { transform: translateY(-4px); }
+
+    /* ── Hobby cards ── */
+    .hobby-card {
+      background: #fff;
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0 3px 16px rgba(0,0,0,.07);
+      transition: transform .25s, box-shadow .25s;
+      cursor: default;
+    }
+    .hobby-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+    .hobby-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    /* ── Websites list ── */
+    .website-link {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .85rem 1.2rem;
+      background: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      transition: background .2s, transform .2s;
+      margin-bottom: .75rem;
+    }
+    .website-link:hover {
+      background: var(--navy);
+      color: var(--gold);
+      transform: translateX(6px);
+    }
+    .website-link i { font-size: 1.3rem; }
+
+    /* ── Schedule table ── */
+    .schedule-table thead {
+      background: var(--navy);
+      color: #fff;
+    }
+    .schedule-table tbody tr:nth-child(odd) { background-color: #eef2f7; }
+    .schedule-table td, .schedule-table th { vertical-align: middle; }
+
+    /* ── Contact form ── */
+    .form-floating label { color: #6b7280; }
+    .btn-send {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      padding: .7rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: background .2s, transform .2s;
+    }
+    .btn-send:hover { background: var(--accent); transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      background-color: var(--navy);
+      color: #8892a0;
+      font-size: .88rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Scroll-reveal utility ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ NAVBAR ═══════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-stars me-1"></i> Ethel John
+    </a>
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navMenu"
+      aria-controls="navMenu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
+        <li class="nav-item"><a class="nav-link" href="#websites">Websites</a></li>
+        <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════ HERO ════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="container position-relative">
+    <div class="row align-items-center g-5">
+
+      <!-- Text -->
+      <div class="col-lg-7 text-center text-lg-start">
+        <span class="badge-role mb-3 d-inline-block">STUDENT · DEVELOPER · ATHLETE</span>
+        <h1 class="mb-3">Hi, I'm <br class="d-none d-lg-block"/>Ethel John<br/>Agustin 👋</h1>
+        <p class="lead mb-4">
+          Welcome to my personal space! I'm passionate about technology,
+          web development, and exploring new hobbies — one project at a time.
+        </p>
+        <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+          <a href="#about" class="btn btn-hero">
+            <i class="bi bi-person-circle me-2"></i>Learn More
+          </a>
+          <a href="#contact" class="btn btn-outline-light rounded-pill px-4 py-2">
+            <i class="bi bi-envelope me-2"></i>Get in Touch
+          </a>
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="col-lg-5 text-center">
+        <img
+          src="https://ui-avatars.com/api/?name=Ethel+John&size=200&background=1e6091&color=e9c46a&bold=true&rounded=true"
+          alt="Ethel John Agustin"
+          class="hero-avatar"
+        />
+        <div class="mt-4">
+          <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill shadow">
+            <i class="bi bi-controller me-1"></i> Gamer &nbsp;·&nbsp;
+            <i class="bi bi-music-note me-1"></i> Music &nbsp;·&nbsp;
+            <i class="bi bi-trophy me-1"></i> Volleyball
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+<section id="about" class="py-5 py-lg-6">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="row g-4 reveal">
+      <div class="col-md-6">
+        <div class="about-card card h-100 p-4">
+          <div class="d-flex align-items-start gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge rounded-circle p-3" style="background:var(--navy)">
+                <i class="bi bi-person-fill fs-4 text-warning"></i>
+              </span>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2" style="color:var(--navy)">Who am I?</h5>
+              <p class="mb-0 text-muted lh-lg">
+                Hello! My name is <strong>Ethel John Agustin</strong>. I am a student
+                who loves learning about <u>Technology</u>, playing sports, and exploring
+                new hobbies. I enjoy <em>web development</em> and creating simple
+                projects to practice my skills.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="about-card card h-100 p-4">
+          <div class="d-flex align-items-start gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge rounded-circle p-3" style="background:var(--navy)">
+                <i class="bi bi-envelope-fill fs-4 text-warning"></i>
+              </span>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2" style="color:var(--navy)">Get in Touch</h5>
+              <p class="mb-2 text-muted">Feel free to reach out anytime!</p>
+              <a
+                href="mailto:Ethel.agustin.ecoast@panpacificu.edu.ph"
+                class="text-decoration-none fw-semibold"
+                style="color:var(--accent)"
+              >
+                <i class="bi bi-envelope me-1"></i>
+                Ethel.agustin.ecoast@panpacificu.edu.ph
+              </a>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <span class="badge rounded-pill" style="background:var(--accent)">
+                  <i class="bi bi-code-slash me-1"></i>Web Dev
+                </span>
+                <span class="badge rounded-pill" style="background:var(--accent)">
+                  <i class="bi bi-trophy me-1"></i>Athlete
+                </span>
+                <span class="badge rounded-pill" style="background:var(--accent)">
+                  <i class="bi bi-mortarboard me-1"></i>Student
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ HOBBIES ═════════════════════════════════ -->
+<section id="hobbies" class="py-5 py-lg-6" style="background:#e8edf3">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">My Hobbies</h2>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-6 col-md-3 reveal">
+        <div class="hobby-card card text-center p-4 h-100">
+          <i class="bi bi-trophy-fill hobby-icon"></i>
+          <h6 class="fw-bold mb-1" style="color:var(--navy)">Volleyball</h6>
+          <p class="text-muted small mb-0">Team player &amp; sports enthusiast</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3 reveal">
+        <div class="hobby-card card text-center p-4 h-100">
+          <i class="bi bi-music-note-beamed hobby-icon"></i>
+          <h6 class="fw-bold mb-1" style="color:var(--navy)">Music</h6>
+          <p class="text-muted small mb-0">Listening to all genres I love</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3 reveal">
+        <div class="hobby-card card text-center p-4 h-100">
+          <i class="bi bi-controller hobby-icon"></i>
+          <h6 class="fw-bold mb-1" style="color:var(--navy)">Online Games</h6>
+          <p class="text-muted small mb-0">Strategy &amp; adventure gaming</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3 reveal">
+        <div class="hobby-card card text-center p-4 h-100">
+          <i class="bi bi-code-slash hobby-icon"></i>
+          <h6 class="fw-bold mb-1" style="color:var(--navy)">Coding</h6>
+          <p class="text-muted small mb-0">Building cool projects &amp; apps</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ WEBSITES ════════════════════════════════ -->
+<section id="websites" class="py-5 py-lg-6">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Favorite Websites</h2>
+    </div>
+    <div class="row g-3 reveal">
+      <div class="col-md-4">
+        <a href="https://www.google.com" target="_blank" rel="noopener" class="website-link">
+          <i class="bi bi-google"></i>
+          <div>
+            <div class="fw-bold">Google</div>
+            <div class="small fw-normal opacity-75">www.google.com</div>
+          </div>
+          <i class="bi bi-arrow-right ms-auto"></i>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener" class="website-link">
+          <i class="bi bi-youtube"></i>
+          <div>
+            <div class="fw-bold">YouTube</div>
+            <div class="small fw-normal opacity-75">www.youtube.com</div>
+          </div>
+          <i class="bi bi-arrow-right ms-auto"></i>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="https://www.wikipedia.org" target="_blank" rel="noopener" class="website-link">
+          <i class="bi bi-wikipedia"></i>
+          <div>
+            <div class="fw-bold">Wikipedia</div>
+            <div class="small fw-normal opacity-75">www.wikipedia.org</div>
+          </div>
+          <i class="bi bi-arrow-right ms-auto"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ SCHEDULE ════════════════════════════════ -->
+<section id="schedule" class="py-5 py-lg-6" style="background:#e8edf3">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">My Weekly Schedule</h2>
+    </div>
+    <div class="reveal">
+      <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+        <table class="table table-hover mb-0 schedule-table">
+          <thead>
+            <tr>
+              <th class="ps-4"><i class="bi bi-calendar3 me-2"></i>Day</th>
+              <th><i class="bi bi-activity me-2"></i>Activity</th>
+              <th><i class="bi bi-clock me-2"></i>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ps-4 fw-semibold">Monday</td>
+              <td><span class="badge bg-primary rounded-pill px-3">Class</span></td>
+              <td>8:00 AM – 12:00 PM</td>
+            </tr>
+            <tr>
+              <td class="ps-4 fw-semibold">Tuesday</td>
+              <td><span class="badge bg-success rounded-pill px-3">Volleyball Practice</span></td>
+              <td>3:00 PM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td class="ps-4 fw-semibold">Wednesday</td>
+              <td><span class="badge bg-warning text-dark rounded-pill px-3">Study</span></td>
+              <td>1:00 PM – 4:00 PM</td>
+            </tr>
+            <tr>
+              <td class="ps-4 fw-semibold">Thursday</td>
+              <td><span class="badge bg-info text-dark rounded-pill px-3">Homework</span></td>
+              <td>4:00 PM – 6:00 PM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ CONTACT ═════════════════════════════════ -->
+<section id="contact" class="py-5 py-lg-6">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Contact Me</h2>
+    </div>
+    <div class="row justify-content-center reveal">
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm p-4 p-lg-5 rounded-4">
+          <form novalidate>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control rounded-3"
+                id="nameInput"
+                placeholder="Your Name"
+                required
+              />
+              <label for="nameInput"><i class="bi bi-person me-1"></i>Your Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control rounded-3"
+                id="emailInput"
+                placeholder="name@example.com"
+                required
+              />
+              <label for="emailInput"><i class="bi bi-envelope me-1"></i>Email Address</label>
+            </div>
+            <div class="form-floating mb-4">
+              <textarea
+                class="form-control rounded-3"
+                id="messageInput"
+                placeholder="Your message"
+                style="height: 130px"
+              ></textarea>
+              <label for="messageInput"><i class="bi bi-chat-text me-1"></i>Your Message</label>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-send">
+                <i class="bi bi-send me-2"></i>Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer class="py-4">
+  <div class="container text-center">
+    <p class="mb-1">
+      &copy; 2026 <strong class="text-white">Ethel John Agustin</strong> — My Personal Space
+    </p>
+    <p class="mb-0">
+      <i class="bi bi-envelope-fill me-1"></i>
+      <a href="mailto:Ethel.agustin.ecoast@panpacificu.edu.ph">
+        Ethel.agustin.ecoast@panpacificu.edu.ph
+      </a>
+    </p>
+  </div>
+</footer>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Scroll Reveal -->
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.12 }
+  );
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
